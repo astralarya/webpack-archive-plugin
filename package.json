@@ -1,0 +1,11 @@
+{
+  "name": "webpack-archive-plugin",
+  "version": "1.0.0",
+  "description": "Webpack plugin to create archives of emitted files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL-3.0"
+}
