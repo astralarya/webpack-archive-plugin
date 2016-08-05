@@ -1,6 +1,6 @@
 let path = require('path');
 let fs = require('fs');
-let targz = require('tar.gz');
+let archiver = require('archiver');
 
 function WebpackArchivePlugin(options) {
 }
@@ -10,9 +10,15 @@ WebpackArchivePlugin.prototype.apply = function(compiler) {
 		let output = compiler.options.output.path;
 
 		// Create tarfile
-		let read = targz().createReadStream(output);
-		let write = fs.createWriteStream(`${output}.tar.gz`);
-		read.pipe(write);
+		let tar = archiver('tar');
+		tar.pipe(fs.createWriteStream(`${output}.tar.gz`));
+
+		for(let asset in compiler.assets) {
+			console.log(asset);
+			tar.append(fs.createReadStream(file1), {name: 'file1.txt'});
+		}
+
+		tar.finalize();
 
 		callback();
 	});

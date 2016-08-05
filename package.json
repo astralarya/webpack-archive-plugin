@@ -2,10 +2,14 @@
   "name": "webpack-archive-plugin",
   "version": "1.0.0",
   "description": "Webpack plugin to create archives of emitted files",
+  "repository": "git+https://github.com/autochthe/webpack-archive-plugin.git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "GPL-3.0"
+  "author": "Mara Kim",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "archiver": "^1.0.1"
+  }
 }
