@@ -26,3 +26,16 @@ module.exports = {
 
 Will create two archives in the same directory as output.path (`__dirname` in the example),
 `${output.path}.tar.gz` and `${output.path}.zip` containing all compiled assets.
+
+## Options
+
+You can pass options when constructing a new plugin, for example `ArchivePlugin(options)`.
+
+The options object supports the following properties:
+
+| Prop		| Type			| Description
+| ----		| ----			| ----
+| output	| string		| Output location / name of archives
+| format	| string OR Array	| Archive formats to use, can be `'tar'` or `'zip'`
+
+If `options` is a string, this is eqiuvalent to passing `{output: options}`.
