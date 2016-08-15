@@ -5,7 +5,11 @@ const fs = require('fs');
 const archiver = require('archiver');
 
 function WebpackArchivePlugin(options = {}) {
-	this.options = options;
+	if(typeof options === 'string') {
+		this.options = {output: options};
+	} else {
+		this.options = options;
+	}
 }
 
 WebpackArchivePlugin.prototype.apply = function(compiler) {
