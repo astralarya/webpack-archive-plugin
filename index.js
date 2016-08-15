@@ -1,13 +1,19 @@
-let path = require('path');
-let fs = require('fs');
-let archiver = require('archiver');
+'use strict';
 
-function WebpackArchivePlugin(options) {
+const path = require('path');
+const fs = require('fs');
+const archiver = require('archiver');
+
+function WebpackArchivePlugin(options = {}) {
+	this.options = options;
 }
 
 WebpackArchivePlugin.prototype.apply = function(compiler) {
-	compiler.plugin("after-emit", function(compiler, callback) {
-		let output = compiler.options.output.path;
+	const options = this.options;
+	compiler.plugin('after-emit', function(compiler, callback) {
+		// Set output location
+		const output = options.output?
+			options.output:compiler.options.output.path;
 
 		// Create archivers
 		let zip = archiver('zip');
@@ -20,7 +26,7 @@ WebpackArchivePlugin.prototype.apply = function(compiler) {
 		});
 		tar.pipe(fs.createWriteStream(`${output}.tar.gz`));
 
-		//
+		// Add assets
 		for(let asset in compiler.assets) {
 			if(compiler.assets.hasOwnProperty(asset)) {
 				zip.append(fs.createReadStream(compiler.assets[asset].existsAt), {name: asset});

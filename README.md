@@ -25,4 +25,4 @@ module.exports = {
 ```
 
 Will create two archives in the same directory as output.path (`__dirname` in the example),
-`${output.path}.tar.gz` and `${output.path}.zip`.
+`${output.path}.tar.gz` and `${output.path}.zip` containing all compiled assets.
