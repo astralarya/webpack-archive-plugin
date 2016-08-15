@@ -1,6 +1,6 @@
 {
   "name": "webpack-archive-plugin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Webpack plugin to create archives of emitted files",
   "repository": "git+https://github.com/autochthe/webpack-archive-plugin.git",
   "main": "index.js",
