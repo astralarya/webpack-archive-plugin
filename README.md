@@ -15,8 +15,14 @@ let ArchivePlugin = require('webpack-archive-plugin');
 
 module.exports = {
 	// configuration
+	output: {
+		path: __dirname + '/dist',
+	},
 	plugins: [
 		new ArchivePlugin(),
 	],
 }
 ```
+
+Will create two archives in the same directory as output.path (`__dirname` in the example),
+`${output.path}.tar.gz` and `${output.path}.zip`.
