@@ -35,7 +35,7 @@ The options object supports the following properties:
 
 | Prop		| Type			| Description
 | ----		| ----			| ----
-| output	| string		| Output location / name of archives
+| output	| string		| Output location / name of archives (without extension)
 | format	| string OR Array	| Archive formats to use, can be `'tar'` or `'zip'`
 
 If `options` is a string, this is eqiuvalent to passing `{output: options}`.
