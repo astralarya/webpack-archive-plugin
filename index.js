@@ -4,7 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const archiver = require('archiver');
 
-function WebpackArchivePlugin(options = {}) {
+function WebpackArchivePlugin(options) {
+	options = options || {};
 	if(typeof options === 'string') {
 		this.options = {output: options};
 	} else {
