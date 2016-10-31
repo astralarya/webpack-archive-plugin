@@ -34,18 +34,20 @@ WebpackArchivePlugin.prototype.apply = function(compiler) {
 			}
 		}
 		if(zip) {
+			const ext = options.ext || 'zip'
 			let stream = archiver('zip');
-			stream.pipe(fs.createWriteStream(`${output}.zip`));
+			stream.pipe(fs.createWriteStream(`${output}.${ext}`));
 			streams.push(stream);
 		}
 		if(tar) {
+			const ext = options.ext || 'tar.gz'
 			let stream = archiver('tar', {
 				gzip: true,
 				gzipOptions: {
 					level: 1
 				}
 			});
-			stream.pipe(fs.createWriteStream(`${output}.tar.gz`));
+			stream.pipe(fs.createWriteStream(`${output}.${ext}`));
 			streams.push(stream);
 		}
 
