@@ -48,13 +48,24 @@ WebpackArchivePlugin.prototype.apply = function(compiler) {
 			streams.push(stream);
 		}
 
-		// Add assets
-		for(let asset in compiler.assets) {
-			if(compiler.assets.hasOwnProperty(asset)) {
-				for(let stream of streams) {
-					stream.append(fs.createReadStream(compiler.assets[asset].existsAt), {name: asset});
+		// Add assets (if not excluded)
+		if (!options.excludeAssets) {
+			for(let asset in compiler.assets) {
+				if(compiler.assets.hasOwnProperty(asset)) {
+					for(let stream of streams) {
+						stream.append(fs.createReadStream(compiler.assets[asset].existsAt), {name: asset});
+					}
 				}
 			}
+		}
+
+		// Add additional targets
+		if (Array.isArray(options.targets)) {
+			options.targets.forEach(function(target) {
+				for(let stream of streams) {
+					stream.append(fs.createReadStream(target.from), {name: target.to});
+				}
+			});
 		}
 
 		// Finalize streams
