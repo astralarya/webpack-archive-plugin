@@ -1,0 +1,28 @@
+{
+  "name": "@username/webpack-archive-plugin",
+  "version": "1.0.0",
+  "description": "Webpack plugin to create archives of emitted files.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laomao800/webpack-archive-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/laomao800/webpack-archive-plugin/issues"
+  },
+  "homepage": "https://github.com/laomao800/webpack-archive-plugin",
+  "keywords": [
+    "webpack",
+    "archive"
+  ],
+  "author": "laomao800 <laomao800@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^1.3.0",
+    "mkdirp": "^0.5.1"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
