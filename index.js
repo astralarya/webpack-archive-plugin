@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const fs = require('fs');
 const archiver = require('archiver');
 
@@ -19,6 +18,10 @@ WebpackArchivePlugin.prototype.apply = function(compiler) {
 		// Set output location
 		const output = options.output?
 			options.output:compiler.options.output.path;
+
+		// Output file filter
+        const filter = options.filter?
+			options.filter:function(){return true};
 
 		// Create archive streams
 		let streams = [];
@@ -54,7 +57,12 @@ WebpackArchivePlugin.prototype.apply = function(compiler) {
 		// Add assets
 		for(let asset in compiler.assets) {
 			if(compiler.assets.hasOwnProperty(asset)) {
-				for(let stream of streams) {
+                if(!filter(asset)) {
+                    // File filtered by the callback
+                    continue;
+                }
+
+                for(let stream of streams) {
 					stream.append(fs.createReadStream(compiler.assets[asset].existsAt), {name: asset});
 				}
 			}
