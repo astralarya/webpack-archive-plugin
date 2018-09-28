@@ -2,6 +2,9 @@
 
 Webpack plugin to create archives of emitted files.
 
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][npm-url]
+
 ## Installation
 
     npm install --save-dev webpack-archive-plugin
@@ -38,3 +41,8 @@ The options object supports the following properties:
 - ext: `string` -> A different extension to use instead of `tar.gz` or `zip` (without leading `.`)
 
 If `options` is a string, this is eqiuvalent to passing `{output: options}`.
+
+
+[npm-image]: https://img.shields.io/npm/v/webpack-archive-plugin.svg
+[npm-url]: https://npmjs.org/package/webpack-archive-plugin
+[downloads-image]: https://img.shields.io/npm/dm/webpack-archive-plugin.svg
